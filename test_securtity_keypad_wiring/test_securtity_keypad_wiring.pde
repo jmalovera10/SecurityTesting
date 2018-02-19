@@ -3,6 +3,9 @@
 //Specified password
 const String KEY = "1234";
 
+//Time in milliseconds which the system is locked
+const int LOCK_TIME = 30000;
+
 //Keypad rows
 const byte ROWS = 4; 
 
@@ -110,7 +113,11 @@ void loop() {
     Serial.println("Door opened!!");
   }
   if(attempts>=maxAttempts) {
-    block = true;
+    currentKey = "";
+    attempts = 0;
+    Serial.println("System locked");
+    delay(LOCK_TIME);
+    Serial.println("System unlocked");
   }
 
   delay(100);
