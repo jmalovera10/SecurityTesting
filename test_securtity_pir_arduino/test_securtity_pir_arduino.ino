@@ -2,7 +2,7 @@
  * PIR sensor tester
  */
  
-int ledPin = 11;                // choose the pin for the LED
+int ledPin = 1;                // choose the pin for the LED
 int inputPin = 2;               // choose the input pin (for PIR sensor)
 int pirState = LOW;             // we start, assuming no motion detected
 int val = 0;                    // variable for reading the pin status
