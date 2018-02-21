@@ -32,7 +32,7 @@ void setup()
   pinMode(B_LED_PIN, OUTPUT);
   pinMode(CONTACT_PIN,INPUT);
   
-  setColor(0, 255, 255);
+  setColor(0, 0, 255);
 }
 
 void loop()
@@ -42,21 +42,23 @@ void loop()
     if(digitalRead(CONTACT_PIN)) {
       currTime = millis();
       buttonState = true;
-      Serial.println("Contact on!");
+      setColor(0, 255, 0);
+      open = true;
+      attempts = 0;
+      Serial.println("Door opened!!");
     }
   }
   else {
-    if(!digitalRead(CONTACT_PIN)) {
-      if((millis()-currTime)>=5000) {
-        setColor(0, 255, 0);
-        open = true;
-        Serial.println("Door opened!!");
-        attempts = 0;
+    if(digitalRead(CONTACT_PIN)) {
+      if((millis()-currTime)>=30000) {
+        setColor(255, 0, 0);
+        Serial.println("Door opened too much time!!");
       }
-      else {
-        Serial.println("NOT ENTOUGH TIME");
-      }
+    }else{
+      setColor(0, 0, 255);
+      open = false;
       buttonState = false;
+      Serial.println("Door closed!!");
     }
   }
   delay(100);
