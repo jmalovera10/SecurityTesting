@@ -1,11 +1,11 @@
 //Minimum voltage required for an alert
 const double MIN_VOLTAGE = 1.2;
 
-//Battery measure pin
-const int BATTERY_PIN = A0;
-
 //Battery indicator
-const int BATTERY_LED = 15;
+const int BATTERY_LED = A2;
+
+//Battery measure pin
+const int BATTERY_PIN = A3;
 
 //Current battery charge
 double batteryCharge;
